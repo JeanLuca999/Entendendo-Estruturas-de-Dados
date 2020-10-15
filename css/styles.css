@@ -4,12 +4,15 @@
     box-sizing: border-box;
 }
 
+body{
+    font-family: 'Courier New', Courier, monospace;
+}
+
 header {
     background-color:rgb(6, 126, 6);
 }
 
 h1 {
-    font-family: 'Courier New', Courier, monospace;
     font-size: 30px;
     color: white;
     text-align: center;
@@ -29,7 +32,6 @@ nav ul{
 }
 
 nav ul li {
-    font-family: 'Courier New', Courier, monospace;
     text-align: center;
     color: white;
     font-weight: bold;
@@ -42,6 +44,26 @@ nav ul li {
 
 nav ul li:hover {
     background-color:rgb(15, 170, 15);
+}
+
+main {
+    text-align: center;
+    margin-top: 20px;
+}
+h2 {
+    color: white;
+    background-color: rgb(57, 87, 57);
+    width: 710px;
+    margin: 10px auto;
+}
+p {
+    width: 675px;
+    margin: 20px auto;
+    text-indent: 1.5em;
+    text-align: justify;
+    background-color: rgba(241, 239, 239, 0.432);
+    box-sizing: initial;
+    padding: 20px;
 }
 
 @media(max-width: 800px){
@@ -61,4 +83,13 @@ nav ul li:hover {
         text-align: center;
         font-size: 3.5vw;
     }
+    h2 {
+        font-size: 4vw;
+        width: 67vw;
+    }
+    p {
+        font-size: 3.5vw;
+        width: 60vw;
+    }
+
 }
