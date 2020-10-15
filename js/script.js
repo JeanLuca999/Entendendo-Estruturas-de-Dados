@@ -35,3 +35,24 @@ function inserirPilha(){
     }
     window.alert('pilha cheia')     
 }
+
+function retirarPilha(){
+    for(let i = 0; i <= 2; i++){
+        if( document.getElementsByClassName('container')[i].style.backgroundColor == 'lightgrey'){
+            document.getElementsByClassName('container')[i].style.backgroundColor = 'white'
+            document.getElementsByClassName('container')[i].innerHTML = ''
+            return
+        }
+    }
+    window.alert('pilha vazia')
+}
+
+function retornarTopoDaPilha(){
+    for(let i = 0; i <= 2; i++){
+        if( document.getElementsByClassName('container')[i].style.backgroundColor == 'lightgrey'){
+            window.alert('O elemento do topo é: ' + document.getElementsByClassName('container')[i].innerText)
+            return
+        }
+    }
+    window.alert('pilha vazia')
+}

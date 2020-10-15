@@ -76,9 +76,11 @@ p {
     font-size: 16px;
     font-weight: bold;
     color: rgb(1, 37, 37);
+    width: 140px;
     padding: 5px;
     margin-top: 20px;
     background-color: rgb(8, 243, 114);
+    outline: 0;
 }
 
 .container{
@@ -110,6 +112,9 @@ p {
     p {
         font-size: 3.5vw;
         width: 60vw;
+    }
+    .botao{
+        font-size: 3.5vw;
     }
 
 }
