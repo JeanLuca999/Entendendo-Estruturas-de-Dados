@@ -66,6 +66,20 @@ p {
     padding: 20px;
 }
 
+#pilha{
+    position: relative;
+    display: none;
+}
+
+.botao{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
+    font-weight: bold;
+    color: rgb(1, 37, 37);
+    padding: 5px;
+    margin-top: 20px;
+    background-color: rgb(8, 243, 114);
+}
 @media(max-width: 800px){
     h1 {
         font-size: 5vw;
