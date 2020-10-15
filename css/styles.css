@@ -80,6 +80,12 @@ p {
     margin-top: 20px;
     background-color: rgb(8, 243, 114);
 }
+
+.container{
+    padding-top: 30px;
+    font-weight: bold;
+    font-size: 20px;
+}
 @media(max-width: 800px){
     h1 {
         font-size: 5vw;
