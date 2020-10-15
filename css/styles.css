@@ -5,7 +5,7 @@
 }
 
 header {
-    background-color: rgb(190, 10, 10);
+    background-color:rgb(6, 126, 6);
 }
 
 h1 {
@@ -13,12 +13,14 @@ h1 {
     font-size: 30px;
     color: white;
     text-align: center;
-    
+    margin-bottom: 20px;
+    padding-top: 10px;
 }
 nav {
     align-items: center;
-    background-color: rgb(255, 8, 0);
+    background-color:rgb(11, 184, 11);
     height: auto;
+    border-top: 3px solid rgb(4, 48, 15);
 }
 nav ul{
     display: flex;
@@ -39,7 +41,7 @@ nav ul li {
 }
 
 nav ul li:hover {
-    background-color: rgb(190, 10, 10);
+    background-color:rgb(15, 170, 15);
 }
 
 @media(max-width: 800px){
@@ -53,6 +55,7 @@ nav ul li:hover {
     }
     nav ul li {
         padding-top: 0;
+        margin-top: 3px;
         margin-bottom: 3px;
         width: 100%;
         text-align: center;
