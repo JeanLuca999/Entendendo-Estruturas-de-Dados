@@ -76,6 +76,11 @@ p {
     display: none;
 }
 
+#lista{
+    position: relative;
+    display: none;
+}
+
 .botao{
     font-family: 'Courier New', Courier, monospace;
     font-size: 16px;

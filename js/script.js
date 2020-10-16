@@ -1,15 +1,23 @@
 let contador = 0
 
-function Pilha(){
-    contador = 0
+function limpaTela(){
+    document.getElementById('pilha').style.display = 'none'
     document.getElementById('fila').style.display = 'none'
-    document.getElementById('container-da-fila').innerHTML = ''
-    document.getElementById('container-da-pilha').innerHTML = '' //reset da pilha a cada chamada
+    document.getElementById('lista').style.display = 'none'    
 
-    document.querySelector('h2').style.display = 'none'//retirando elementos da tela
+    document.getElementById('container-da-pilha').innerHTML = ''
+    document.getElementById('container-da-fila').innerHTML = ''
+   document.getElementById('container-da-lista').innerHTML = ''
+
+    document.querySelector('h2').style.display = 'none'
     for(let i = 0; i < 3; i++){
         document.getElementsByTagName('p')[i].style.display = 'none'
     }
+}
+
+function Pilha(){
+    contador = 0
+    limpaTela()
 
     let container = document.createElement('div') //criando a estrutura que servira como pilha
     container.style.display = 'flex'
@@ -30,7 +38,7 @@ function Pilha(){
 
 
 function inserirPilha(){
-    for(let i = 2; i >= 0; i--){ //o container de indice 2 eh o container da base, por isso começamos por ele
+    for(let i = 2; i >= 0; i--){ //o container de indice 2 eh a base, por isso começamos por ele
         if(document.getElementsByClassName('container')[i].style.backgroundColor == 'white'){
             document.getElementsByClassName('container')[i].style.backgroundColor = 'lightgrey'
             document.getElementsByClassName('container')[i].innerHTML = `${++contador}`
@@ -65,15 +73,7 @@ function retornarTopoDaPilha(){
 
 function Fila(){
     contador = 0
-    //retirando elementos anteriores da tela
-    document.getElementById('pilha').style.display = 'none'
-    document.getElementById('container-da-fila').innerHTML = ''
-    document.getElementById('container-da-pilha').innerHTML = ''
-
-    document.querySelector('h2').style.display = 'none'
-    for(let i = 0; i < 3; i++){
-        document.getElementsByTagName('p')[i].style.display = 'none'
-    }
+    limpaTela()
 
     let container = document.createElement('div')
     container.style.display = 'flex'
@@ -121,5 +121,15 @@ function retirarFila(){
 
 
 function retornarInicioDaFila(){
-    window.alert('O elemento no inicio da fila é: ' +  document.getElementsByClassName('container')[0].innerText)
+    if(document.getElementsByClassName('container')[0].innerText != ''){
+        window.alert('O elemento no inicio da fila é: ' +  document.getElementsByClassName('container')[0].innerText)
+    } else {
+        window.alert('Fila vazia')
+    }
+}
+
+
+function Lista(){
+    limpaTela()
+    document.getElementById('lista').style.display = 'block'
 }
