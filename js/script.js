@@ -15,24 +15,31 @@ function limpaTela(){
     }
 }
 
-function Pilha(){
-    contador = 0
-    limpaTela()
 
-    let container = document.createElement('div') //criando a estrutura que servira como pilha
+function iniciaEstrutura(largura, direcaoDoFlex){
+    let container = document.createElement('div')
     container.style.display = 'flex'
-    container.style.flexDirection = 'column'
-    container.style.width = '100px'
+    container.style.flexDirection = direcaoDoFlex
+    container.style.width = largura
     container.style.margin = '0 auto'
 
-    for(let i = 0; i < 3; i++){ //criando cada espaço interno da pilha
+    for(let i = 0; i < 3; i++){
         let elemento = document.createElement('div')
         elemento.style.backgroundColor = 'white'
         elemento.setAttribute('class', 'container')
         container.appendChild(elemento)
     }
-    let pilha = document.getElementById('container-da-pilha') //adicionando a pilha ao corpo do site
-    pilha.appendChild(container)
+    return container
+}
+
+
+function Pilha(){
+    contador = 0
+    limpaTela()
+
+    let estruturaPilha = iniciaEstrutura('100px','column')
+    let pilha = document.getElementById('container-da-pilha')
+    pilha.appendChild(estruturaPilha)
     document.getElementById('pilha').style.display = 'block'
 }
 
@@ -75,20 +82,8 @@ function Fila(){
     contador = 0
     limpaTela()
 
-    let container = document.createElement('div')
-    container.style.display = 'flex'
-    container.style.flexDirection = 'row'
-    container.style.width = '300px'
-    container.style.margin = '0 auto'
-
-    for(let i = 0; i < 3; i++){
-        let elemento = document.createElement('div')
-        elemento.style.backgroundColor = 'white'
-        elemento.setAttribute('class', 'container')
-        container.appendChild(elemento)
-    }
-
-    document.getElementById('container-da-fila').appendChild(container)
+    let estruturaFila = iniciaEstrutura('300px','row')
+    document.getElementById('container-da-fila').appendChild(estruturaFila)
     document.getElementById('fila').style.display = 'block'
 }
 
@@ -130,21 +125,10 @@ function retornarInicioDaFila(){
 
 
 function Lista(){
+    contador = 0
     limpaTela()
 
-    let container = document.createElement('div')
-    container.style.display = 'flex'
-    container.style.flexDirection = 'row'
-    container.style.width = '300px'
-    container.style.margin = '0 auto'
-
-    for(let i = 0; i < 4; i++){
-        let elemento = document.createElement('div')
-        elemento.style.backgroundColor = 'white'
-        elemento.setAttribute('class', 'container')
-        container.appendChild(elemento)
-    }
-
-    document.getElementById('container-da-lista').appendChild(container)
+    let estruturaLista = iniciaEstrutura('300px', 'row')
+    document.getElementById('container-da-lista').appendChild(estruturaLista)
     document.getElementById('lista').style.display = 'block'
 }
