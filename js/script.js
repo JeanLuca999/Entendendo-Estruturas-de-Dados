@@ -1,4 +1,5 @@
 function Pilha(){
+    document.getElementById('fila').style.display = 'none'
     document.getElementById('container-da-pilha').innerHTML = '' //reset da pilha a cada chamada
 
     document.querySelector('h2').style.display = 'none'//retirando elementos da tela
@@ -11,11 +12,9 @@ function Pilha(){
     container.style.flexDirection = 'column'
     container.style.width = '100px'
     container.style.margin = '0 auto'
+    
     for(let i = 0; i < 3; i++){ //criando cada espaço interno da pilha
         let elemento = document.createElement('div')
-        elemento.style.width = '100px'
-        elemento.style.height = '80px'
-        elemento.style.border = '1px solid black'
         elemento.style.backgroundColor = 'white'
         elemento.setAttribute('class', 'container')
         container.appendChild(elemento)
@@ -25,9 +24,10 @@ function Pilha(){
     document.getElementById('pilha').style.display = 'block'
 }
 
+
 function inserirPilha(){
     for(let i = 2; i >= 0; i--){ //o container de indice 2 eh o container da base, por isso começamos por ele
-        if( document.getElementsByClassName('container')[i].style.backgroundColor == 'white'){
+        if(document.getElementsByClassName('container')[i].style.backgroundColor == 'white'){
             document.getElementsByClassName('container')[i].style.backgroundColor = 'lightgrey'
             document.getElementsByClassName('container')[i].innerHTML = `${Math.abs(i-2)}`
             return
@@ -36,9 +36,10 @@ function inserirPilha(){
     window.alert('pilha cheia')     
 }
 
+
 function retirarPilha(){
     for(let i = 0; i <= 2; i++){
-        if( document.getElementsByClassName('container')[i].style.backgroundColor == 'lightgrey'){
+        if( document.getElementsByClassName('container')[i].style.backgroundColor == 'lightgrey' ){
             document.getElementsByClassName('container')[i].style.backgroundColor = 'white'
             document.getElementsByClassName('container')[i].innerHTML = ''
             return
@@ -46,6 +47,7 @@ function retirarPilha(){
     }
     window.alert('pilha vazia')
 }
+
 
 function retornarTopoDaPilha(){
     for(let i = 0; i <= 2; i++){
@@ -55,4 +57,31 @@ function retornarTopoDaPilha(){
         }
     }
     window.alert('pilha vazia')
+}
+
+
+function Fila(){
+    //retirando elementos anteriores da tela
+    document.getElementById('pilha').style.display = 'none'
+    document.getElementById('container-da-fila').innerHTML = ''
+
+    document.querySelector('h2').style.display = 'none'
+    for(let i = 0; i < 3; i++){
+        document.getElementsByTagName('p')[i].style.display = 'none'
+    }
+
+    let container = document.createElement('div')
+    container.style.display = 'flex'
+    container.style.flexDirection = 'row'
+    container.style.width = '300px'
+    container.style.margin = '0 auto'
+
+    for(let i = 0; i < 3; i++){
+        let elemento = document.createElement('div')
+        elemento.style.backgroundColor = 'white'
+        elemento.setAttribute('class', 'container')
+        container.appendChild(elemento)
+    }
+    document.getElementById('container-da-fila').appendChild(container)
+    document.getElementById('fila').style.display = 'block'
 }
