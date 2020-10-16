@@ -131,5 +131,20 @@ function retornarInicioDaFila(){
 
 function Lista(){
     limpaTela()
+
+    let container = document.createElement('div')
+    container.style.display = 'flex'
+    container.style.flexDirection = 'row'
+    container.style.width = '300px'
+    container.style.margin = '0 auto'
+
+    for(let i = 0; i < 4; i++){
+        let elemento = document.createElement('div')
+        elemento.style.backgroundColor = 'white'
+        elemento.setAttribute('class', 'container')
+        container.appendChild(elemento)
+    }
+
+    document.getElementById('container-da-lista').appendChild(container)
     document.getElementById('lista').style.display = 'block'
 }
