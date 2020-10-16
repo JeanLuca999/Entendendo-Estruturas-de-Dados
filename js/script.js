@@ -1,4 +1,5 @@
 let contador = 0
+let lista = []
 
 function limpaTela(){
     document.getElementById('pilha').style.display = 'none'
@@ -51,8 +52,7 @@ function inserirPilha(){
             document.getElementsByClassName('container')[i].innerHTML = `${++contador}`
             return
         }
-    }
-    window.alert('pilha cheia')     
+    }    
 }
 
 
@@ -74,7 +74,6 @@ function retornarTopoDaPilha(){
             return
         }
     }
-    window.alert('pilha vazia')
 }
 
 
@@ -82,7 +81,7 @@ function Fila(){
     contador = 0
     limpaTela()
 
-    let estruturaFila = iniciaEstrutura('300px','row')
+    let estruturaFila = iniciaEstrutura('280px','row')
     document.getElementById('container-da-fila').appendChild(estruturaFila)
     document.getElementById('fila').style.display = 'block'
 }
@@ -96,7 +95,6 @@ function inserirFila(){
             return
         }
    }
-   window.alert('Fila cheia')
 }
 
 
@@ -116,11 +114,7 @@ function retirarFila(){
 
 
 function retornarInicioDaFila(){
-    if(document.getElementsByClassName('container')[0].innerText != ''){
-        window.alert('O elemento no inicio da fila é: ' +  document.getElementsByClassName('container')[0].innerText)
-    } else {
-        window.alert('Fila vazia')
-    }
+    window.alert('O elemento no inicio da fila é: ' +  document.getElementsByClassName('container')[0].innerText)
 }
 
 
@@ -128,7 +122,22 @@ function Lista(){
     contador = 0
     limpaTela()
 
-    let estruturaLista = iniciaEstrutura('300px', 'row')
+    let estruturaLista = iniciaEstrutura('280px', 'row')
     document.getElementById('container-da-lista').appendChild(estruturaLista)
     document.getElementById('lista').style.display = 'block'
+}
+
+function inserirInicioLista(){
+    if(document.getElementsByClassName('container')[2].innerText == ''){
+        contador += 1
+        lista.push(contador)
+        for(let i = 0, j=lista.length-1; i < lista.length; i++,j--){
+            document.getElementsByClassName('container')[i].innerText = lista[j]
+            document.getElementsByClassName('container')[i].style.backgroundColor = 'lightgrey'
+        }
+    }
+}
+
+function inserirFinalLista(){
+   inserirFila()
 }
