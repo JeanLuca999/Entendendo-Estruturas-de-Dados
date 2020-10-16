@@ -1,5 +1,9 @@
+let contador = 0
+
 function Pilha(){
+    contador = 0
     document.getElementById('fila').style.display = 'none'
+    document.getElementById('container-da-fila').innerHTML = ''
     document.getElementById('container-da-pilha').innerHTML = '' //reset da pilha a cada chamada
 
     document.querySelector('h2').style.display = 'none'//retirando elementos da tela
@@ -12,7 +16,7 @@ function Pilha(){
     container.style.flexDirection = 'column'
     container.style.width = '100px'
     container.style.margin = '0 auto'
-    
+
     for(let i = 0; i < 3; i++){ //criando cada espaço interno da pilha
         let elemento = document.createElement('div')
         elemento.style.backgroundColor = 'white'
@@ -29,7 +33,7 @@ function inserirPilha(){
     for(let i = 2; i >= 0; i--){ //o container de indice 2 eh o container da base, por isso começamos por ele
         if(document.getElementsByClassName('container')[i].style.backgroundColor == 'white'){
             document.getElementsByClassName('container')[i].style.backgroundColor = 'lightgrey'
-            document.getElementsByClassName('container')[i].innerHTML = `${Math.abs(i-2)}`
+            document.getElementsByClassName('container')[i].innerHTML = `${++contador}`
             return
         }
     }
@@ -45,7 +49,6 @@ function retirarPilha(){
             return
         }
     }
-    window.alert('pilha vazia')
 }
 
 
@@ -61,9 +64,11 @@ function retornarTopoDaPilha(){
 
 
 function Fila(){
+    contador = 0
     //retirando elementos anteriores da tela
     document.getElementById('pilha').style.display = 'none'
     document.getElementById('container-da-fila').innerHTML = ''
+    document.getElementById('container-da-pilha').innerHTML = ''
 
     document.querySelector('h2').style.display = 'none'
     for(let i = 0; i < 3; i++){
@@ -82,6 +87,39 @@ function Fila(){
         elemento.setAttribute('class', 'container')
         container.appendChild(elemento)
     }
+
     document.getElementById('container-da-fila').appendChild(container)
     document.getElementById('fila').style.display = 'block'
+}
+
+
+function inserirFila(){
+    for(let i = 0; i < 3; i++){
+        if( document.getElementsByClassName('container')[i].style.backgroundColor == 'white' ){
+            document.getElementsByClassName('container')[i].style.backgroundColor = 'lightgrey'
+            document.getElementsByClassName('container')[i].innerHTML = `${++contador}`
+            return
+        }
+   }
+   window.alert('Fila cheia')
+}
+
+
+function retirarFila(){
+    for(let i = 0; i < 3; i++){
+        let elementoAtual = document.getElementsByClassName('container')[i]
+        try{ // cada elemento vira o seu proxima
+            let proximoElemento = document.getElementsByClassName('container')[i+1]
+            elementoAtual.innerText = proximoElemento.innerText
+            elementoAtual.style.backgroundColor = proximoElemento.style.backgroundColor
+        } catch { // o terceiro elemento nao tem proximo por isso ele eh apenas resetado
+            elementoAtual.style.backgroundColor = 'white'
+            elementoAtual.innerText = ''
+        }
+    }
+}
+
+
+function retornarInicioDaFila(){
+    window.alert('O elemento no inicio da fila é: ' +  document.getElementsByClassName('container')[0].innerText)
 }
