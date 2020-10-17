@@ -1,5 +1,5 @@
 let contador = 0
-let lista = []
+let DadosDaEstrutura = []
 
 function limpaTela(){
     document.getElementById('pilha').style.display = 'none'
@@ -8,7 +8,7 @@ function limpaTela(){
 
     document.getElementById('container-da-pilha').innerHTML = ''
     document.getElementById('container-da-fila').innerHTML = ''
-   document.getElementById('container-da-lista').innerHTML = ''
+    document.getElementById('container-da-lista').innerHTML = ''
 
     document.querySelector('h2').style.display = 'none'
     for(let i = 0; i < 3; i++){
@@ -34,7 +34,16 @@ function iniciaEstrutura(largura, direcaoDoFlex){
 }
 
 
+function reiniciaEstrutura(){
+    for(let i = 0; i < 3; i++){
+        document.getElementsByClassName('container')[i].innerText = ''
+        document.getElementsByClassName('container')[i].style.backgroundColor = 'white'
+    }
+}
+
+
 function Pilha(){
+    DadosDaEstrutura = []
     contador = 0
     limpaTela()
 
@@ -46,38 +55,37 @@ function Pilha(){
 
 
 function inserirPilha(){
-    for(let i = 2; i >= 0; i--){ //o container de indice 2 eh a base, por isso começamos por ele
-        if(document.getElementsByClassName('container')[i].style.backgroundColor == 'white'){
-            document.getElementsByClassName('container')[i].style.backgroundColor = 'lightgrey'
-            document.getElementsByClassName('container')[i].innerHTML = `${++contador}`
-            return
-        }
-    }    
+    if(document.getElementsByClassName('container')[0].innerText != ''){
+        return //verificação se o topo está cheio
+    }
+
+    DadosDaEstrutura.push(++contador)
+    for(let i = 2, j = 0; j < DadosDaEstrutura.length; i--, j++){
+        document.getElementsByClassName('container')[i].innerText = DadosDaEstrutura[j]
+        document.getElementsByClassName('container')[i].style.backgroundColor = 'lightgrey'
+    }
 }
 
 
 function retirarPilha(){
-    for(let i = 0; i <= 2; i++){
-        if( document.getElementsByClassName('container')[i].style.backgroundColor == 'lightgrey' ){
-            document.getElementsByClassName('container')[i].style.backgroundColor = 'white'
-            document.getElementsByClassName('container')[i].innerHTML = ''
-            return
-        }
+    DadosDaEstrutura.pop()
+    reiniciaEstrutura() //limpeza da estrutura na tela para coloca-la com os valores corretos depois
+    for(let i = 2, j = 0; j < DadosDaEstrutura.length; i--, j++){
+        document.getElementsByClassName('container')[i].innerText = DadosDaEstrutura[j]
+        document.getElementsByClassName('container')[i].style.backgroundColor = 'lightgrey'
     }
 }
 
 
 function retornarTopoDaPilha(){
-    for(let i = 0; i <= 2; i++){
-        if( document.getElementsByClassName('container')[i].style.backgroundColor == 'lightgrey'){
-            window.alert('O elemento do topo é: ' + document.getElementsByClassName('container')[i].innerText)
-            return
-        }
-    }
+    if(DadosDaEstrutura.length == 0)
+        return
+    window.alert('O elemento que está no topo é: ' + DadosDaEstrutura[DadosDaEstrutura.length-1])
 }
 
 
 function Fila(){
+    DadosDaEstrutura = []
     contador = 0
     limpaTela()
 
@@ -88,38 +96,33 @@ function Fila(){
 
 
 function inserirFila(){
-    for(let i = 0; i < 3; i++){
-        if( document.getElementsByClassName('container')[i].style.backgroundColor == 'white' ){
-            document.getElementsByClassName('container')[i].style.backgroundColor = 'lightgrey'
-            document.getElementsByClassName('container')[i].innerHTML = `${++contador}`
-            return
-        }
-   }
+    if(DadosDaEstrutura.length == 3) //verificação se a fila está cheia
+        return
+    DadosDaEstrutura.push(++contador)
+    document.getElementsByClassName('container')[DadosDaEstrutura.length-1].innerText = DadosDaEstrutura[DadosDaEstrutura.length-1]
+    document.getElementsByClassName('container')[DadosDaEstrutura.length-1].style.backgroundColor = 'lightgrey'
 }
 
 
 function retirarFila(){
-    for(let i = 0; i < 3; i++){
-        let elementoAtual = document.getElementsByClassName('container')[i]
-        try{ // cada elemento vira o seu proxima
-            let proximoElemento = document.getElementsByClassName('container')[i+1]
-            elementoAtual.innerText = proximoElemento.innerText
-            elementoAtual.style.backgroundColor = proximoElemento.style.backgroundColor
-        } catch { // o terceiro elemento nao tem proximo por isso ele eh apenas resetado
-            elementoAtual.style.backgroundColor = 'white'
-            elementoAtual.innerText = ''
-        }
+    DadosDaEstrutura.pop()
+    reiniciaEstrutura()
+    for(let i = 0; i < DadosDaEstrutura.length; i++){
+        document.getElementsByClassName('container')[i].innerText = DadosDaEstrutura[i]
+        document.getElementsByClassName('container')[i].style.backgroundColor = 'lightgrey'
     }
 }
 
 
 function retornarInicioDaFila(){
-    window.alert('O elemento no inicio da fila é: ' +  document.getElementsByClassName('container')[0].innerText)
+    if(DadosDaEstrutura.length == 0)
+        return
+    window.alert('O elemento no inicio da fila é: ' +  DadosDaEstrutura[0])
 }
 
 
 function Lista(){
-    lista = []
+    DadosDaEstrutura = []
     contador = 0
     limpaTela()
 
@@ -131,9 +134,8 @@ function Lista(){
 
 function verificaListaCheia(){
     for(let i = 0; i < 3; i++){
-        if(document.getElementsByClassName('container')[i].innerText == ''){
+        if(document.getElementsByClassName('container')[i].innerText == '')
             return false
-        }
     }
     return true
 }
@@ -143,9 +145,9 @@ function inserirInicioLista(){
     if(verificaListaCheia())
         return
 
-    lista.unshift(++contador)
-    for(let i = 0; i < lista.length; i++){
-        document.getElementsByClassName('container')[i].innerText = lista[i];
+    DadosDaEstrutura.unshift(++contador)
+    for(let i = 0; i < DadosDaEstrutura.length; i++){
+        document.getElementsByClassName('container')[i].innerText = DadosDaEstrutura[i];
         document.getElementsByClassName('container')[i].style.backgroundColor = 'lightgrey'
     }
 }
@@ -155,35 +157,31 @@ function inserirFinalLista(){
     if(verificaListaCheia())
         return
 
-   lista.push(++contador)
-   for(let i = 0; i < lista.length; i++){
-       document.getElementsByClassName('container')[i].innerText = lista[i];
+   DadosDaEstrutura.push(++contador)
+   for(let i = 0; i < DadosDaEstrutura.length; i++){
+       document.getElementsByClassName('container')[i].innerText = DadosDaEstrutura[i];
        document.getElementsByClassName('container')[i].style.backgroundColor = 'lightgrey'
    }
 }
 
 
 function retirarInicioLista(){
-    lista.shift()
-    for(let i = 0; i < lista.length; i++){
-        document.getElementsByClassName('container')[i].innerText = lista[i]
+    DadosDaEstrutura.shift()
+    reiniciaEstrutura()
+    for(let i = 0; i < DadosDaEstrutura.length; i++){
+        document.getElementsByClassName('container')[i].innerText = DadosDaEstrutura[i]
         document.getElementsByClassName('container')[i].style.backgroundColor = 'lightgrey'
     }
-    //retira o ultimo elemento ja que ele foi movido para frente
-    document.getElementsByClassName('container')[lista.length].innerText = ''
-    document.getElementsByClassName('container')[lista.length].style.backgroundColor = 'white'
 }
 
 
 function retirarFinalLista(){
-    lista.pop()
-    for(let i = 0; i < lista.length; i++){
-        document.getElementsByClassName('container')[i].innerText = lista[i]
+    DadosDaEstrutura.pop()
+    reiniciaEstrutura()
+    for(let i = 0; i < DadosDaEstrutura.length; i++){
+        document.getElementsByClassName('container')[i].innerText = DadosDaEstrutura[i]
         document.getElementsByClassName('container')[i].style.backgroundColor = 'lightgrey'
     }
-    //retira o ultimo elemento da lista desenhada na tela
-    document.getElementsByClassName('container')[lista.length].innerText = ''
-    document.getElementsByClassName('container')[lista.length].style.backgroundColor = 'white'
 }
 
 
@@ -196,19 +194,14 @@ function retirarIndiceLista(){
     
     indice = parseInt(indice)
     if(indice == 0){
-        lista.splice(indice, indice+1)
+        DadosDaEstrutura.splice(indice, indice+1)
     } else {
-        lista.splice(indice, indice)
+        DadosDaEstrutura.splice(indice, indice)
     }
     
-
-    for(let i = 0; i < 3; i++){ //reset da lista para coloca-la depois na nova ordem
-        document.getElementsByClassName('container')[i].innerText = ''
-        document.getElementsByClassName('container')[i].style.backgroundColor = 'white'
-    }
-
-    for(let i = 0; i < lista.length; i++){
-        document.getElementsByClassName('container')[i].innerText = lista[i]
+    reiniciaEstrutura()
+    for(let i = 0; i < DadosDaEstrutura.length; i++){
+        document.getElementsByClassName('container')[i].innerText = DadosDaEstrutura[i]
         document.getElementsByClassName('container')[i].style.backgroundColor = 'lightgrey'
     }
 }
