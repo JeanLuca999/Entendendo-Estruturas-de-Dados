@@ -1,10 +1,10 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body{
+body {
     font-family: 'Courier New', Courier, monospace;
 }
 
@@ -19,12 +19,14 @@ h1 {
     margin-bottom: 20px;
     padding-top: 10px;
 }
+
 nav {
     align-items: center;
     background-color:rgb(11, 184, 11);
     height: auto;
     border-top: 3px solid rgb(4, 48, 15);
 }
+
 nav ul{
     display: flex;
     justify-content: center;
@@ -50,6 +52,7 @@ main {
     text-align: center;
     margin-top: 20px;
 }
+
 h2 {
     color: white;
     background-color: rgb(57, 87, 57);
@@ -66,7 +69,7 @@ p {
     padding: 20px;
 }
 
-#pilha{
+#pilha {
     position: relative;
     display: none;
 }
@@ -76,25 +79,30 @@ p {
     display: none;
 }
 
-#lista{
+#lista {
     position: relative;
     display: none;
 }
 
-.botao{
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 16px;
+.botao {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
     font-weight: bold;
     text-align: center;
-    color: rgb(1, 37, 37);
+    color: white;
     width: 140px;
     padding: 5px;
     margin-top: 20px;
-    background-color: rgb(8, 243, 114);
+    background-color: rgb(31, 102, 49);
+    border-radius: 5px;
     outline: 0;
 }
 
-.container{
+.botao:hover {
+    background-color: rgb(40, 131, 63);
+}
+
+.container {
     padding-top: 30px;
     font-weight: bold;
     font-size: 20px;
@@ -103,7 +111,7 @@ p {
     border: 1px solid black;
 }
 
-@media(max-width: 800px){
+@media(max-width: 800px) {
     h1 {
         font-size: 5vw;
     }

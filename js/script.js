@@ -1,6 +1,14 @@
 let contador = 0
 let DadosDaEstrutura = []
 
+function voltar(){
+    limpaTela()
+    document.querySelector('h2').style.display = 'block'
+    for(let i = 0; i < 3; i++){
+        document.getElementsByTagName('p')[i].style.display = 'block'
+    }
+}
+
 function limpaTela(){
     document.getElementById('pilha').style.display = 'none'
     document.getElementById('fila').style.display = 'none'
@@ -186,9 +194,9 @@ function retirarFinalLista(){
 
 
 function retirarIndiceLista(){
-    let indice = window.prompt('Escolha um indice para remover: ')
+    let indice = window.prompt('Escolha um índice entre 0 e 2 para remover: ')
     if(indice != '0' && indice != '1' && indice != '2'){
-        window.alert('Indice inválido!')
+        window.alert('Índice inválido!')
         return
     }
     
