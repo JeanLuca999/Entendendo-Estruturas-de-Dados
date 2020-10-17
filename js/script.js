@@ -174,6 +174,7 @@ function retirarInicioLista(){
     document.getElementsByClassName('container')[lista.length].style.backgroundColor = 'white'
 }
 
+
 function retirarFinalLista(){
     lista.pop()
     for(let i = 0; i < lista.length; i++){
@@ -184,6 +185,7 @@ function retirarFinalLista(){
     document.getElementsByClassName('container')[lista.length].innerText = ''
     document.getElementsByClassName('container')[lista.length].style.backgroundColor = 'white'
 }
+
 
 function retirarIndiceLista(){
     let indice = window.prompt('Escolha um indice para remover: ')
