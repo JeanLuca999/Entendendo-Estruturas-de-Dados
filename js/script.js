@@ -119,6 +119,7 @@ function retornarInicioDaFila(){
 
 
 function Lista(){
+    lista = []
     contador = 0
     limpaTela()
 
@@ -127,17 +128,85 @@ function Lista(){
     document.getElementById('lista').style.display = 'block'
 }
 
-function inserirInicioLista(){
-    if(document.getElementsByClassName('container')[2].innerText == ''){
-        contador += 1
-        lista.push(contador)
-        for(let i = 0, j=lista.length-1; i < lista.length; i++,j--){
-            document.getElementsByClassName('container')[i].innerText = lista[j]
-            document.getElementsByClassName('container')[i].style.backgroundColor = 'lightgrey'
+
+function verificaListaCheia(){
+    for(let i = 0; i < 3; i++){
+        if(document.getElementsByClassName('container')[i].innerText == ''){
+            return false
         }
+    }
+    return true
+}
+
+
+function inserirInicioLista(){
+    if(verificaListaCheia())
+        return
+
+    lista.unshift(++contador)
+    for(let i = 0; i < lista.length; i++){
+        document.getElementsByClassName('container')[i].innerText = lista[i];
+        document.getElementsByClassName('container')[i].style.backgroundColor = 'lightgrey'
     }
 }
 
+
 function inserirFinalLista(){
-   inserirFila()
+    if(verificaListaCheia())
+        return
+
+   lista.push(++contador)
+   for(let i = 0; i < lista.length; i++){
+       document.getElementsByClassName('container')[i].innerText = lista[i];
+       document.getElementsByClassName('container')[i].style.backgroundColor = 'lightgrey'
+   }
+}
+
+
+function retirarInicioLista(){
+    lista.shift()
+    for(let i = 0; i < lista.length; i++){
+        document.getElementsByClassName('container')[i].innerText = lista[i]
+        document.getElementsByClassName('container')[i].style.backgroundColor = 'lightgrey'
+    }
+    //retira o ultimo elemento ja que ele foi movido para frente
+    document.getElementsByClassName('container')[lista.length].innerText = ''
+    document.getElementsByClassName('container')[lista.length].style.backgroundColor = 'white'
+}
+
+function retirarFinalLista(){
+    lista.pop()
+    for(let i = 0; i < lista.length; i++){
+        document.getElementsByClassName('container')[i].innerText = lista[i]
+        document.getElementsByClassName('container')[i].style.backgroundColor = 'lightgrey'
+    }
+    //retira o ultimo elemento da lista desenhada na tela
+    document.getElementsByClassName('container')[lista.length].innerText = ''
+    document.getElementsByClassName('container')[lista.length].style.backgroundColor = 'white'
+}
+
+function retirarIndiceLista(){
+    let indice = window.prompt('Escolha um indice para remover: ')
+    if(indice != '0' && indice != '1' && indice != '2'){
+        window.alert('Indice inválido!')
+        return
+    }
+    
+    indice = parseInt(indice)
+    if(indice == 0){
+        lista.splice(indice, indice+1)
+    } else {
+        lista.splice(indice, indice)
+    }
+    
+
+    for(let i = 0; i < 3; i++){ //reset da lista para coloca-la depois na nova ordem
+        document.getElementsByClassName('container')[i].innerText = ''
+        document.getElementsByClassName('container')[i].style.backgroundColor = 'white'
+    }
+
+    for(let i = 0; i < lista.length; i++){
+        document.getElementsByClassName('container')[i].innerText = lista[i]
+        document.getElementsByClassName('container')[i].style.backgroundColor = 'lightgrey'
+    }
 }
