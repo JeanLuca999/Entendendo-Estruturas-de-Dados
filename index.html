@@ -13,7 +13,7 @@
             <ul>
                 <li onclick="Pilha()"> Pilha Estática </li>
                 <li onclick="Fila()"> Fila Estática </li>
-                <li onclick="Lista()"> Lista Estática</li>
+                <li onclick="Lista()"> Lista Estática </li>
             </ul>
         </nav>
     </header>
@@ -24,7 +24,7 @@
             após o armazenamento seja possível a manipulação destes dados de maneira eficiente.
         </p>
         <p>
-            Existem Estruturas de Dados tanto estáticas quanto dinâmicas, estruturas estáticas trabalham com um espaço limitado para o armazenamento de dados, enquanto as estruturas dinâmicas como o próprio nome sugere, trabalham com armazenamento de dados dinâmico, não possuindo um limite determinado.
+            Existem Estruturas de Dados tanto estáticas quanto dinâmicas. Estruturas estáticas trabalham com um espaço limitado para o armazenamento de dados, enquanto as estruturas dinâmicas como o próprio nome sugere, trabalham com armazenamento de dados dinâmico, não possuindo um limite determinado.
         </p>
         <p>
             Todas as Estruturas de Dados possuem algumas funções padrão como: <strong>criação da estrutura</strong><strong>, inserção de um elemento</strong> e <strong>remoção de um elemento</strong>. Além disso, cada estrutura possui uma maneira específica de tratar os dados, desde o modo como inserimos os dados, até o modo como podemos ter acesso a eles.
@@ -32,32 +32,44 @@
         <div id="pilha">
             <h2>Pilha Estática</h2>
             <div id="container-da-pilha"></div>
-            <p>Em uma pilha só é possível adicionar elementos no topo e retirar elementos do topo.</p>
-            <button class="botao" onclick="inserirPilha()">Inserir</button> <br>
-            <button class="botao" onclick="retirarPilha()">Retirar</button> <br>
-            <button class="botao" onclick="retornarTopoDaPilha()">Retornar Topo</button> <br>
-            <button class="botao voltar" onclick="voltar()">Voltar</button>
+            <p>Uma pilha é uma estrutura do tipo <abbr title="Last in First Out">LIFO</abbr>(Last in First Out), onde só podemos adicionar elementos no topo da pilha e remover elementos do topo.</p>
+
+            <h3>Teste algumas operações de uma Pilha Estática</h3>
+            <div class="fundo-botoes">
+                <button class="botao" onclick="inserirPilha()">Inserir</button> <br>
+                <button class="botao" onclick="retirarPilha()">Retirar</button>  <br>
+                <button class="botao" onclick="retornarTopoDaPilha()">Retornar Topo</button> <br>
+                <button class="botao voltar" onclick="voltar()">Voltar</button>
+            </div>
         </div>
         <div id="fila">
             <h2>Fila Estática</h2>
             <div id="container-da-fila"></div>
 
-            <p>Em uma fila só é possível adicionar elementos no inicio da fila e retirar elementos do fim da fila.</p>
-            <button class="botao" onclick="inserirFila()">Inserir</button> <br>
-            <button class="botao" onclick="retirarFila()">Retirar</button> <br>
-            <button class="botao" onclick="retornarInicioDaFila()">Retornar Inicio Da Fila</button> <br>
-            <button class="botao voltar" onclick="voltar()">Voltar</button>
+            <p>Uma fila é uma estrutura do tiop <abbr title="Fisrt in First Out">FIFO</abbr>(First in First Out), onde só podemos adicionar elementos no fim da fila e remover elementos do início, seguindo o exemplo do funcionamento de uma fila comum.</p>
+
+            <h3>Teste algumas operações de uma Fila Estática</h3>
+            <div class="fundo-botoes">
+                <button class="botao" onclick="inserirFila()">Inserir</button> <br>
+                <button class="botao" onclick="retirarFila()">Retirar</button> <br>
+                <button class="botao" onclick="retornarInicioDaFila()">Retornar Inicio Da Fila</button> <br>
+                <button class="botao voltar" onclick="voltar()">Voltar</button>
+            </div>
         </div>
         <div id="lista">
             <h2>Lista Estática</h2>
             <div id="container-da-lista"></div>
-            <p>Em uma lista nós podemos adicionar elementos no começo, no fim e no meio. Também podemos retirar elementos no começo, fim e meio.</p>
-            <button class="botao" onclick="inserirInicioLista()">Inserir no Inicio</button> <br>
-            <button class="botao" onclick="inserirFinalLista()">Inserir no Final</button> <br>
-            <button class="botao" onclick="retirarInicioLista()">Remover no Inicio</button> <br>
-            <button class="botao" onclick="retirarFinalLista()">Remover no Final</button> <br>
-            <button class="botao" onclick="retirarIndiceLista()">Remover um Índice</button> <br>
-            <button class="botao voltar" onclick="voltar()">Voltar</button>
+            <p>Uma lista é um arranjo sequencial de elementos no qual podemos inserir elementos por qualquer ordem, seja inicio, meio ou fim e também podemos remover elementos de qualquer parte da lista.</p>
+
+            <h3>Teste algumas operações de um Lista Estática</h3>
+            <div class="fundo-botoes">
+                <button class="botao" onclick="inserirInicioLista()">Inserir No Inicio</button> <br>
+                <button class="botao" onclick="inserirFinalLista()">Inserir No Final</button> <br>
+                <button class="botao" onclick="retirarInicioLista()">Remover No Inicio</button> <br>
+                <button class="botao" onclick="retirarFinalLista()">Remover No Final</button> <br>
+                <button class="botao" onclick="retirarIndiceLista()">Remover Pelo Índice</button> <br>
+                <button class="botao voltar" onclick="voltar()">Voltar</button>
+            </div>
         </div>
     </main>
     <footer>

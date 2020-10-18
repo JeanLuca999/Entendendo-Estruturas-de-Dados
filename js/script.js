@@ -113,7 +113,7 @@ function inserirFila(){
 
 
 function retirarFila(){
-    DadosDaEstrutura.pop()
+    DadosDaEstrutura.shift()
     reiniciaEstrutura()
     for(let i = 0; i < DadosDaEstrutura.length; i++){
         document.getElementsByClassName('container')[i].innerText = DadosDaEstrutura[i]
